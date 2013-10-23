@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+
+<project basedir="." default="build" name="timesheet-app">
+	<property environment="env" />
+	<property name="junit.output.dir" value="junit" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.6" />
+	<property name="source" value="1.6" />
+	<property name="dist.dir" value="${basedir}/../../dist/zapapps/timesheet-app" />
+	<path id="timesheet-app.classpath">
+		<pathelement location="target/classes" />
+		<pathelement location="target/test-classes" />
+		<pathelement location="lib/antlr-2.7.6.jar" />
+		<pathelement location="lib/aopalliance-1.0.jar" />
+		<pathelement location="lib/asm-3.1.jar" />
+		<pathelement location="lib/cglib-2.2.jar" />
+		<pathelement location="lib/commons-collections-3.1.jar" />
+		<pathelement location="lib/commons-logging-1.1.1.jar" />
+		<pathelement location="lib/dom4j-1.6.1.jar" />
+		<pathelement location="lib/hamcrest-core-1.1.jar" />
+		<pathelement location="lib/hibernate-commons-annotations-3.2.0.Final.jar" />
+		<pathelement location="lib/hibernate-core-3.6.8.Final.jar" />
+		<pathelement location="lib/hibernate-entitymanager-3.6.8.Final.jar" />
+		<pathelement location="lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" />
+		<pathelement location="lib/hibernate-validator-4.2.0.Final.jar" />
+		<pathelement location="lib/javassist-3.12.0.GA.jar" />
+		<pathelement location="lib/javax.servlet-api-3.0.1.jar" />
+		<pathelement location="lib/jstl-1.2.jar" />
+		<pathelement location="lib/jta-1.1.jar" />
+		<pathelement location="lib/junit-4.10.jar" />
+		<pathelement location="lib/mockito-all-1.9.0.jar" />
+		<pathelement location="lib/mysql-connector-java-5.1.6.jar" />
+		<pathelement location="lib/slf4j-api-1.6.1.jar" />
+		<pathelement location="lib/spring-aop-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-asm-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-beans-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-context-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-context-support-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-core-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-expression-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-jdbc-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-orm-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-test-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-tx-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-web-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/spring-webmvc-3.1.0.RELEASE.jar" />
+		<pathelement location="lib/validation-api-1.0.0.GA.jar" />
+	</path>
+	<path id="run.DaoTest (1).classpath">
+		<path refid="timesheet-app.classpath" />
+		<path refid="Maven Dependencies.libraryclasspath" />
+	</path>
+	<target name="init">
+		<mkdir dir="target/classes" />
+		<mkdir dir="target/test-classes" />
+		<copy includeemptydirs="false" todir="target/classes">
+			<fileset dir="src/main/java">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy includeemptydirs="false" todir="target/classes">
+			<fileset dir="src/main/resources">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy includeemptydirs="false" todir="target/test-classes">
+			<fileset dir="src/test/java">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy includeemptydirs="false" todir="target/test-classes">
+			<fileset dir="src/test/resources">
+				<include name="**/*.java" />
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="target/classes" />
+		<delete dir="target/test-classes" />
+		<delete dir="${dist.dir}" />
+	</target>
+	<target depends="clean" name="cleanall" />
+	<target depends="build-subprojects,build-project" name="build" />
+	<target name="build-subprojects" />
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src/main/java" />
+			<src path="src/main/resources" />
+			<include name="**/*.java" />
+			<classpath refid="timesheet-app.classpath" />
+		</javac>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src/test/java" />
+			<src path="src/test/resources" />
+			<include name="**/*.java" />
+			<classpath refid="timesheet-app.classpath" />
+		</javac>
+	</target>
+
+	<target name="EmployeeControllerTest">
+		<mkdir dir="${junit.output.dir}" />
+		<junit fork="yes" printsummary="withOutAndErr">
+			<formatter type="xml" />
+			<test name="org.timesheet.web.EmployeeControllerTest" todir="${junit.output.dir}" />
+			<classpath refid="run.EmployeeControllerTest.classpath" />
+		</junit>
+	</target>
+	<target name="junitreport">
+		<junitreport todir="${junit.output.dir}">
+			<fileset dir="${junit.output.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${junit.output.dir}" />
+		</junitreport>
+	</target>
+
+	<target depends="build" name="install">
+		<!--			<war destfile="ContentByLocation.war" webxml="WebRoot/WEB-INF/web.xml">
+			  <fileset dir="WebRoot"/>
+			</war>
+			<copy file="ContentByLocation.war" todir="${dist.dir}"/>
+-->
+		<copy includeemptydirs="false" todir="${dist.dir}">
+			<fileset dir="src/main/webapp">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy todir="${dist.dir}/WEB-INF">
+			<fileset dir="target" />
+		</copy>
+	</target>
+
+</project>
